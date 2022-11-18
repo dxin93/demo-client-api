@@ -5,8 +5,12 @@
       "name": "Aurora Default Panel"
     },
     {
-      "name": "Special Panel",
+      "name": "Freedom Forever Special Panel",
       "id": 2
+    },
+    {
+      "name": "Powerhome Special Panel",
+      "id": 3
     }
   ]
 }

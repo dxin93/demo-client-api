@@ -3,6 +3,9 @@ const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
 
@@ -11,8 +14,31 @@ server.get('/echo', (req, res) => {
   res.jsonp(req.query)
 })
 
-server.post('/determine_preferred_modules', (req, res) => {
-  res.jsonp(req.query)
+server.post('/determine_preferred_modules', jsonParser, (req, res) => {
+  tenant = req.body["tenant_name"]
+  preferred_panels = [
+    {
+      "id": 1,
+      "name": "Aurora Default Panel"
+    }
+  ]
+  if (tenant == "Freedom Forever") {
+    preferred_panels.push(
+      {
+        "name": "Freedom Forever Special Panel",
+        "id": 2
+      }
+    )
+  } else if (tenant == "Freedom Forever") {
+    preferred_panels.push(
+      {
+        "name": "Powerhome Special Panel",
+        "id": 3
+      }
+    )
+  }
+
+  res.json({ preferred_panels: preferred_panels })
 })
 
 
