@@ -2,13 +2,11 @@
   "panels": [
     {
       "id": 1,
-      "name": "David",
-      "age": 30
+      "name": "Aurora Default Panel"
     },
     {
-      "name": "John",
-      "id": 2,
-      "age": 40
+      "name": "Special Panel",
+      "id": 2
     }
   ]
 }
