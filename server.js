@@ -15,6 +15,7 @@ server.get('/echo', (req, res) => {
 })
 
 server.post('/determine_preferred_modules', jsonParser, (req, res) => {
+  console.log("Received body: ", req.body)
   project_state = req.body["state"]
   preferred_panels = ["a367ddcb-75f2-48ef-9472-a73738d5a661"] // Feather TP660P-275 : Talesun
   if (project_state == "CA") {
