@@ -15,27 +15,12 @@ server.get('/echo', (req, res) => {
 })
 
 server.post('/determine_preferred_modules', jsonParser, (req, res) => {
-  tenant = req.body["tenant_name"]
-  preferred_panels = [
-    {
-      "id": 1,
-      "name": "Aurora Default Panel"
-    }
-  ]
-  if (tenant == "Freedom Forever") {
-    preferred_panels.push(
-      {
-        "name": "Freedom Forever Special Panel",
-        "id": 2
-      }
-    )
-  } else if (tenant == "Freedom Forever") {
-    preferred_panels.push(
-      {
-        "name": "Powerhome Special Panel",
-        "id": 3
-      }
-    )
+  project_state = req.body["state"]
+  preferred_panels = ["a367ddcb-75f2-48ef-9472-a73738d5a661"] // Feather TP660P-275 : Talesun
+  if (project_state == "CA") {
+    preferred_panels = ["d57a9490-f486-4e7c-ae43-2e32c3e0f9d3"] // SPR-X21-445-COM : Sunpower Corp.
+  } else if (project_state = "FL") {
+    preferred_panels = ["e396b156-63bd-4187-9750-5514f35a022f"] // BVM6610M-280 : Boviet
   }
 
   res.json({ preferred_panels: preferred_panels })
